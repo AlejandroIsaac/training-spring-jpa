@@ -1,9 +1,6 @@
 package com.shop.jaaxjpa.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = "localList")
 @Entity
 @Table(
         name = "customer",
@@ -31,7 +29,7 @@ public class Customer {
     @GeneratedValue(
             generator = "customer_sequence",
             strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    //@Column(name = "id")
     private Long idCustomer;
 
     private String firstName;
@@ -50,7 +48,9 @@ public class Customer {
 
     //Relacion ManyToMany
     @ManyToMany(
-            mappedBy = "customerList"
+            mappedBy = "customerList",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
     )
     private List<Local> localList;
 }

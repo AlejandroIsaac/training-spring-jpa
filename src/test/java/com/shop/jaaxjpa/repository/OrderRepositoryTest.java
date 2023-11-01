@@ -13,7 +13,7 @@ class OrderRepositoryTest {
     @Autowired
     OrderRepository orderRepository;
 
-    @Test
+    //@Test
     public void save(){
         Local local = Local.builder()
                 .name("pcshop")

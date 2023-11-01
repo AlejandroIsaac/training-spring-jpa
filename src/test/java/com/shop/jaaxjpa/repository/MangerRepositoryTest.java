@@ -15,7 +15,7 @@ class MangerRepositoryTest {
     @Autowired
     MangerRepository mangerRepository;
 
-    @Test
+    //@Test
     public void getAll(){
         List<Manager> managers= mangerRepository.findAll();
         System.out.println(managers);

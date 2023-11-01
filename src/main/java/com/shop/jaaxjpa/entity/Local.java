@@ -43,12 +43,13 @@ public class Local {
 
     //Relacion ManyToMany
     @ManyToMany(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
     )
     @JoinTable(
             name = "local_customer_map",
             joinColumns = @JoinColumn(name = "id_local", referencedColumnName = "idLocal"),
-            inverseJoinColumns = @JoinColumn(name = "id_customer", referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "id_customer", referencedColumnName = "idCustomer")
     )
     private List<Customer> customerList;
 
